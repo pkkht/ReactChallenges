@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+
 const animalData = [
   { name: 'Eagle', class: 'Birds' },
   { name: 'Penguin', class: 'Birds' },
@@ -15,37 +16,62 @@ const animalData = [
   { name: 'Trout', class: 'Fish' },
 ];
 
+
+
 const LabelFilter = () => {
   const animalClasses = Array.from(new Set(animalData.map((animal) => animal.class)));
 
-  const [animalClassClicked, setAnimalClassClicked] = useState('');
-  const [filtered, setFiltered] = useState(animalClasses);
+  const [animals, setAnimals] = useState(animalData);
+  let animalClassSelected = useRef(new Array());
 
-  const handleFilterAnimals = (animalClass) =>{
-    setAnimalClassClicked(animalClass);
-    const filteredAnimals = animalClasses.filter(animalCl => { if (animalCl.class === animalClass)
-        return animalCl
+  const handleClassClick = (animalClass)=>{
+
+    console.log(animalClass);
+
+    const result = animalClassSelected.current.filter(ac=> ac===animalClass);
+
+    console.log("filter is:" + result);
+
+    if (result.length === 0){
+      animalClassSelected.current.push(animalClass)
+    }
+    else{
+      animalClassSelected.current.splice(animalClassSelected.current.indexOf(animalClass),1);
+    }
+    
+    const result1 = new Array();
+
+    Object.values(animalData).forEach(val => {     
+      animalClassSelected.current.forEach(acval => {      
+        if (acval === val.class){
+          result1.push(val);
+        }      
+      })    
     });
-    setFiltered(filteredAnimals);
-    console.log(filteredAnimals);
+   
+    
+    
+    console.log(result1);
+    setAnimals(result1);
+    
   }
 
   return (
-    <Wrapper clicked={animalClassClicked}>
+    <Wrapper>
       <div data-testid='labels-wrapper-id' className='label-container'>
         {animalClasses.map((animalClass) => (
           <div 
             data-testid='label-id'
             className='label'
             key={animalClass}
-            onClick={()=> handleFilterAnimals(animalClass)}
+            onClick={() => handleClassClick(animalClass)}
           >
             {animalClass}
           </div>
         ))}
       </div>
       <div data-testid='tile-container-id' className='tile-container'>
-        {animalData.map((animal) => (
+        {animals.map((animal) => (
           <div data-testid='animal-tile-id' className='tile' key={animal.name}>{animal.name}</div>
         ))}
       </div>
@@ -69,8 +95,8 @@ const Wrapper = styled.div`
     gap: 12px;
 
     .label {
-      background-color: "#fff";
-      color: "#333";
+      background-color: #fff;
+      color: #333;
       border: 1px solid #333;
       border-radius: 4px;
       margin-bottom: 8px;
