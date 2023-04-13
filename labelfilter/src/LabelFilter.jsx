@@ -25,22 +25,14 @@ const LabelFilter = () => {
   let animalClassSelected = useRef(new Array());
 
   const handleClassClick = (animalClass)=>{
-
-    console.log(animalClass);
-
     const result = animalClassSelected.current.filter(ac=> ac===animalClass);
-
-    console.log("filter is:" + result);
-
     if (result.length === 0){
       animalClassSelected.current.push(animalClass)
     }
     else{
       animalClassSelected.current.splice(animalClassSelected.current.indexOf(animalClass),1);
-    }
-    
+    } 
     const result1 = new Array();
-
     Object.values(animalData).forEach(val => {     
       animalClassSelected.current.forEach(acval => {      
         if (acval === val.class){
@@ -48,10 +40,6 @@ const LabelFilter = () => {
         }      
       })    
     });
-   
-    
-    
-    console.log(result1);
     setAnimals(result1);
     
   }
