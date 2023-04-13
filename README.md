@@ -5,9 +5,9 @@ EASY CHALLENGES:
 ------------------------------ 
 Following projects built using CRA:
 1. classiccounter
-2. progressbar
-3. selectallcheckboxes
-4. submitmessages
+2. progressbar - See for HTML progress bar element
+3. selectallcheckboxes - See how onChange is passed with param in the JSX and why .map method needs to return obj
+4. submitmessages - great example of onKeyDown event using Shift and Enter key, then also adding to prev state array using ...
 
 npm run start to check the browser output: localhost:3000
 
@@ -31,4 +31,5 @@ npm test => This will run vitest
 INTERMEDIATE CHALLENGES:
 --------------------------------------------
 6. Reaction Game - great example for useRef hook 
-7. LabelFilter
+7. LabelFilter - great example for Object.values (loop within loop)
+8. ValidateForm - great example of using an object for form-level validation and Javascript map collection. See setState of errors especially
