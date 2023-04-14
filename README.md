@@ -32,4 +32,5 @@ INTERMEDIATE CHALLENGES:
 --------------------------------------------
 6. Reaction Game - great example for useRef hook 
 7. LabelFilter - great example for Object.values (loop within loop)
-8. ValidateForm - great example of using an object for form-level validation and Javascript map collection. See setState of errors especially
+8. ValidateForm - great example of using an object (setPerson) for form-level validation and Javascript map collection. See setState of errors especially
+9. togglethemecustomhook - great example for simple custom hook
