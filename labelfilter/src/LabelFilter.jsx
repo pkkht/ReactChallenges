@@ -53,6 +53,8 @@ const LabelFilter = () => {
             className='label'
             key={animalClass}
             onClick={() => handleClassClick(animalClass)}
+            style={animalClassSelected.current.includes(animalClass)? 
+            {color: '#333','background-color': '#fff'}:{color: '#fff','background-color': '#333'}}
           >
             {animalClass}
           </div>
