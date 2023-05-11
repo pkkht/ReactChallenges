@@ -34,3 +34,8 @@ INTERMEDIATE CHALLENGES:
 7. LabelFilter - great example for Object.values (loop within loop)
 8. ValidateForm - great example of using an object (setPerson) for form-level validation and Javascript map collection. See setState of errors especially
 9. togglethemecustomhook - great example for simple custom hook
+
+
+ADVANCED CHALLENGES:
+--------------------------------------------
+10. SquidGame - Still in progress -todo red alert, etc
